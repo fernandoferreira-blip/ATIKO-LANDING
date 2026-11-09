@@ -16,9 +16,9 @@ Primera vez: `npm install` y luego `npm run dev`. No hace falta `.env`; la únic
 - **En vivo:** https://atiko-landing.vercel.app (proyecto `atiko-landing` del equipo `fisco1` en Vercel).
 - **Sale con `noindex`** y `robots.txt` bloquea a los buscadores mientras no exista
   `NEXT_PUBLIC_SITIO_URL`. Cuando haya dominio: agregar esa variable en Vercel y redesplegar.
-- **`git push` NO despliega**: el proyecto de Vercel no está conectado a este repositorio.
-  Se publica a mano desde la carpeta: `npx vercel deploy --prod --yes --scope fisco1`.
-  Por eso lo que está en `main` no es necesariamente lo que está en vivo.
+- **Lo que entra a `main` se publica solo**: Vercel está conectado a este repositorio.
+  Cualquier otra rama genera una **liga de vista previa** (aparece en el Pull Request) sin
+  tocar el sitio en vivo. No hace falta desplegar a mano.
 - `.vercelignore` deja fuera `fotos-origen/` (24 MB) y `scripts/`; **`fuentes/` sí se sube**,
   el build la necesita.
 
@@ -27,7 +27,7 @@ Primera vez: `npm install` y luego `npm run dev`. No hace falta `.env`; la únic
 1. `git pull` en `main`.
 2. Rama nueva por cambio: `git checkout -b ajuste-hero`.
 3. Commit, `git push -u origin ajuste-hero` y abrir un Pull Request en GitHub.
-4. Se revisa, se fusiona a `main` y desde `main` se despliega.
+4. Se revisa en la liga de vista previa; al fusionarlo a `main` sale en vivo.
 
 ## Dónde se cambia qué
 
