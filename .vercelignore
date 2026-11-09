@@ -1,0 +1,12 @@
+node_modules
+.next
+.vercel
+.env
+.env.*
+fotos-origen
+scripts
+*.tsbuildinfo
+next-env.d.ts
+README.md
+.git
+.env.example
