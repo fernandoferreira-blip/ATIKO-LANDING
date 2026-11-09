@@ -29,6 +29,26 @@ Primera vez: `npm install` y luego `npm run dev`. No hace falta `.env`; la únic
 3. Commit, `git push -u origin ajuste-hero` y abrir un Pull Request en GitHub.
 4. Se revisa en la liga de vista previa; al fusionarlo a `main` sale en vivo.
 
+## Publicar en el dominio de ATIKO
+
+**Imprescindible, se haga como se haga:** definir la variable `NEXT_PUBLIC_SITIO_URL` con el
+dominio final (ej. `https://atikocowork.com`, sin diagonal al final) **y volver a compilar**.
+Sin ella el sitio sale con `noindex` y `robots.txt` bloquea a Google: funciona, pero no aparece
+en buscadores. También fija la dirección de las vistas previas al compartir en WhatsApp y redes.
+
+Dos caminos:
+
+- **A. Dominio en el proyecto de Vercel que ya existe (lo más simple).** En Vercel, proyecto
+  `atiko-landing` → *Settings → Domains* → agregar el dominio; Vercel muestra los registros
+  DNS (`A` para el dominio raíz, `CNAME` para `www`) que se dan de alta donde esté registrado
+  el dominio. Luego *Settings → Environment Variables* → `NEXT_PUBLIC_SITIO_URL` en Production
+  y redesplegar. Si el DNS tiene un "URL Redirect" o "Parking" previo, hay que quitarlo.
+- **B. Otro hosting.** Necesita Node 20.9 o mayor (es Next.js con servidor, no HTML suelto):
+  `npm ci`, `NEXT_PUBLIC_SITIO_URL=https://… npm run build`, `npm start` (escucha en el 3080;
+  en otro puerto: `npx next start -p <puerto>`). En Netlify o similares, importar el repo y
+  poner la variable antes del primer build. La carpeta `fuentes/` tiene que viajar: el build
+  la usa.
+
 ## Dónde se cambia qué
 
 - **Todo el texto y los datos de contacto**: `lib/contenido.ts`. No hace falta tocar componentes.
